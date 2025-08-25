@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminex Solutions - About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+
+main {
+    flex: 1; /* pushes footer down */
+}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+              margin: 0;
+            padding: 0;
+        }
+
+    /* Header */
+header {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+    color: #001b3a;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0; /* stick directly at top */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #001b3a;
+    border-bottom: 0 0 12px 12px; /* rounded only bottom */
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0, 27, 58, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* Logo / Title */
+header h1 { 
+    font-size: 1.8rem; 
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(45deg, #001b3a, #003a7a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: font-size 0.3s ease, padding 0.3s ease;
+}
+
+/* Nav links */
+nav a {
+    color: #001b3a;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover { 
+    background-color: rgba(0, 27, 58, 0.08);
+    text-decoration: none;
+}
+
+nav a:active {
+    background-color: rgba(0, 27, 58, 0.15);
+}
+
+/* ===== Scroll Effect ===== */
+header.shrink {
+    padding: 6px 15px;
+    box-shadow: 0 2px 8px rgba(0, 27, 58, 0.15);
+}
+
+header.shrink h1 {
+    font-size: 1.4rem;
+}
+
+        /* Main content container */
+        .content-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            gap: 40px;
+            width: 100%;
+            
+        }
+
+        /* Language Selector - Left side */
+        .lang-sidebar {
+            width: 100px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 120px;
+            align-self: flex-start;
+            margin-top: 70px;
+        }
+
+        .lang-selector {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin-bottom: 20px;
+        }
+
+        .lang-circle {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #001b3a 0%, #003a7a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 32.5px;
+            left: 32.5px;
+            box-shadow: 0 6px 15px rgba(0, 27, 58, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+            z-index: 1001;
+        }
+        
+        .lang-circle:hover {
+            transform: scale(1.12);
+            box-shadow: 0 8px 20px rgba(0, 27, 58, 0.4);
+        }
+
+        .lang-buttons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 130px;
+            height: 130px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: transform 0.4s ease;
+        }
+
+        .lang-buttons button {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Show buttons in circle */
+        .lang-buttons.show {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+        
+        .lang-buttons.show button:nth-child(1) { 
+            top: 0%; 
+            left: 50%; 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1); 
+            pointer-events: auto; 
+            transition-delay: 0.05s;
+        }
+        
+        .lang-buttons.show button:nth-child(2) { 
+            top: 25%; 
+            left: 90%; 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1); 
+            pointer-events: auto; 
+            transition-delay: 0.1s;
+        }
+        
+        .lang-buttons.show button:nth-child(3) { 
+            top: 75%; 
+            left: 90%; 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1); 
+            pointer-events: auto; 
+            transition-delay: 0.15s;
+        }
+        
+        .lang-buttons.show button:nth-child(4) { 
+            top: 100%; 
+            left: 50%; 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1); 
+            pointer-events: auto; 
+            transition-delay: 0.2s;
+        }
+
+        .lang-buttons.show button:nth-child(5) { 
+            top: 75%; 
+            left: 10%; 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1); 
+            pointer-events: auto; 
+            transition-delay: 0.25s;
+        }
+        .lang-buttons button:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+ 
+
+        /* Main Section */
+        main {
+            flex: 1;
+        }
+
+        .about-main {
+           margin-top: 150px;
+            padding: 45px 40px;         
+           background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            border: 1px solid #0b1625;
+            display: flex;
+            flex-direction: column;      
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 16px;          
+            color: #333;
+            font-weight: 500;
+            line-height: 1.7;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-main h2 {
+            margin-bottom: 30px;
+            font-size: 2.4rem;
+            color: #001b3a;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-main h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #001b3a);
+            border-radius: 2px;
+        }
+
+        .about-main p {
+            margin-bottom: 25px;
+            max-width: 800px;
+            text-align: justify;
+            text-align-last: center;
+        }
+        
+        .about-main p:first-of-type {
+            margin-top: 10px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, #001b3a 0%, #003a7a 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            width: 260px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 27, 58, 0.15);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 27, 58, 0.2);
+        }
+
+        .feature i {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #4ecdc4;
+            background: linear-gradient(135deg, #4ecdc4, #2a9d8f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .feature p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            text-align: center;
+            opacity: 0.9;
+        }
+ 
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #001b3a 0%, #00264d 100%);
+    color: #fff;
+    padding: 50px 20px 25px;
+    width: 100%;        /* Full width without scrollbar issue */
+    margin: 0;          /* Remove margins */
+    position: relative;
+    left: 0;
+    right: 0;
+      font-family: "OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+    font-weight: bold;
+}
+
+
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 35px;
+    max-width: 1500px;
+    margin: 0 auto;           /* Center content inside */
+}
+
+
+        .footer-section h2,
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .footer-section h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #4ecdc4, #2a9d8f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-section p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #d0e2ff;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 12px 0;
+        }
+
+        .footer-section ul li a {
+            color: #d0e2ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            display: inline-block;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4ecdc4;
+            transform: translateX(5px);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+            color: #d0e2ff;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #4ecdc4;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 1rem;
+            color: #a0c0ff;
+        }
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .content-container {
+        gap: 30px;
+    }
+
+    .footer-container {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        
+    }
+ 
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 10px;
+        font-size: 1rem;
+    }
+
+    
+.about-main {
+    padding: 35px 30px;
+    font-size: 1.15rem;
+    margin-top: 10px;    /* small gap below lang buttons */
+    width: 400px;
+    text-align: center;  /* optional: center text */
+}
+
+    
+.about-main h2 {
+    font-size: 2.2rem;
+}
+
+    
+.content-container {
+    display: flex;
+    flex-direction: column;   /* stack elements on top of each other */
+    align-items: center;      /* center them horizontally */
+}
+
+
+.lang-sidebar {
+    display: flex;
+    flex-direction: row;        /* always horizontal */
+    justify-content: flex-start;/* align left */
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    width: auto;                /* no forced width */
+    padding: 5px 10px;
+}
+
+.lang-toggle {
+    display: none;              /* keep hidden */
+}
+
+.lang-buttons {
+    display: flex;
+    flex-direction: row;        /* always row */
+    gap: 8px;
+    pointer-events: auto;
+    opacity: 1;
+    width: auto;
+    height: auto;
+}
+
+.lang-buttons button {
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.lang-buttons button:hover {
+    background: #2a80b9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+    
+ 
+
+    /* Footer - tablet */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+        gap: 25px;
+        margin: 0%;
+        padding: 0%;
+    }
+
+    .footer-section h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .lang-sidebar {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .lang-info {
+        max-width: 100%;
+    }
+    
+    .lang-selector {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .lang-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+        top: 30px;
+        left: 30px;
+    }
+    
+    .lang-buttons {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .lang-buttons button {
+        width: 45px;
+        height: 45px;
+        font-size: 12px;
+    }
+    
+    .about-main {
+        padding: 30px 25px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    
+    .about-main h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Footer - mobile */
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer {
+        padding: 35px 20px 20px;
+    }
+
+    .footer-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .footer-section p,
+    .footer-section ul li a {
+        font-size: 0.95rem;
+    }
+
+    .social-icons a {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    
+    .footer-bottom {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 15px;
+    }
+    
+    .lang-selector {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .lang-circle {
+        width: 55px;
+        height: 55px;
+        font-size: 16px;
+        top: 27.5px;
+        left: 27.5px;
+    }
+    
+    .lang-buttons {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .lang-buttons button {
+        width: 42px;
+        height: 42px;
+        font-size: 11px;
+    }
+    
+    .about-main {
+        padding: 25px 20px;
+        font-size: 1.05rem;
+    }
+    
+    .about-main h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    nav a {
+        font-size: 1rem;
+    }
+
+    /* Footer - small mobile */
+    .footer {
+        padding: 30px 15px 15px;
+    }
+
+    .footer-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .footer-section p,
+    .footer-section ul li a {
+        font-size: 0.9rem;
+    }
+
+    .social-icons a {
+        font-size: 16px;
+        margin-right: 8px;
+    }
+
+    .footer-bottom {
+        font-size: 0.85rem;
+    }
+}
+
+    </style>
+<body>
+    <header>
+        <h1 id="company-name">Luminex Solutions</h1>
+        <nav>
+            <a href="index.html" id="nav-home">Home</a>
+            <a href="about.html" id="nav-about">About</a>
+            <a href="contact.html" id="nav-contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        <aside class="lang-sidebar">
+            <div class="lang-selector">
+                <div class="lang-circle" id="langToggle">En</div>
+                <div class="lang-buttons" id="langButtons">
+                    <button title="English">En</button>
+                    <button title="French">Ar</button>
+                    <button title="Spanish">Kur</button>
+                    <button title="German">Sp</button>
+                    <button title="Chinese">Fr</button>
+                </div>
+            </div>
+            
+      
+        </aside>
+ 
+        <main>
+            <section class="about-main">
+                <h2>About Our Company</h2>
+                <p>Welcome to Luminex Solutions! We are dedicated to providing the highest quality services to our clients around the world. Our team of experts works tirelessly to ensure your complete satisfaction.</p>
+                <p>Founded in 2010, we have grown to become a global leader in our industry, with offices in over 20 countries and a diverse team representing countless cultures and backgrounds.</p>
+                <p>Our mission is to innovate, inspire, and make a positive impact on the world through our work. We believe in sustainability, ethical business practices, and giving back to the communities we serve.</p>
+                
+                <div class="features">
+
+                    <div class="feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Reach</h3>
+                        <p>Services available in over 30 countries worldwide</p>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fas fa-language"></i>
+                        <h3>Multilingual</h3>
+                        <p>Support for more than 15 languages</p>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <h3>Team Diversity</h3>
+                        <p>Team members from 25 different nationalities</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+     
+
+     </div>
+
+    <script>
+     
+document.addEventListener('DOMContentLoaded', function() {
+    const langToggle = document.getElementById('langToggle');
+    const langButtons = document.getElementById('langButtons');
+
+    // Translations for different languages
+    const translations = {
+        En: {
+            h2: "About Our Company",
+            p1: "Welcome to Luminex Solutions! We are dedicated to providing the highest quality services to our clients around the world. Our team of experts works tirelessly to ensure your complete satisfaction.",
+            p2: "Founded in 2010, we have grown to become a global leader in our industry, with offices in over 20 countries and a diverse team representing countless cultures and backgrounds.",
+            p3: "Our mission is to innovate, inspire, and make a positive impact on the world through our work. We believe in sustainability, ethical business practices, and giving back to the communities we serve.",
+            feature1_h3: "Global Reach",
+            feature1_p: "Services available in over 30 countries worldwide",
+            feature2_h3: "Multilingual",
+            feature2_p: "Support for more than 15 languages",
+            feature3_h3: "Team Diversity",
+            feature3_p: "Team members from 25 different nationalities"
+        },
+        Ar: {
+            h2: "عن شركتنا",
+            p1: "مرحبًا بكم في Luminex Solutions! نحن ملتزمون بتقديم خدمات عالية الجودة لعملائنا حول العالم. يعمل فريقنا من الخبراء بلا كلل لضمان رضاكم التام.",
+            p2: "تأسست الشركة في عام 2010، ونمونا لنصبح قائدًا عالميًا في مجالنا، مع مكاتب في أكثر من 20 دولة وفريق متنوع يمثل العديد من الثقافات والخلفيات.",
+            p3: "مهمتنا هي الابتكار والإلهام وإحداث تأثير إيجابي على العالم من خلال عملنا. نحن نؤمن بالاستدامة والممارسات التجارية الأخلاقية ورد الجميل للمجتمعات التي نخدمها.",
+            feature1_h3: "انتشار عالمي",
+            feature1_p: "خدمات متوفرة في أكثر من 30 دولة حول العالم",
+            feature2_h3: "متعدد اللغات",
+            feature2_p: "دعم لأكثر من 15 لغة",
+            feature3_h3: "تنوع الفريق",
+            feature3_p: "أعضاء الفريق من 25 جنسية مختلفة"
+        },
+        Kur: {
+            h2: "دەربارەی کۆمپانیایەکەمان",
+            p1: "بەخێربێن بۆ Luminex Solutions! ئێمە بۆ دابینکردنی خزمەتگوزارییەکی باشترین بۆ موشتەرییەکانمان دەرچووە و هەموو هەوڵمان دەدەن.",
+            p2: "کۆمپانیا لە 2010 دامەزرابوو و بە گەورەیەکی جیهانی گەیشتووە، لەگەڵ فەرمی لە زیاتر لە 20 وڵات و تیمێکی جۆراوجۆر لە کلتورەکان و پسپۆڕەکان.",
+            p3: "ئامانجمان ئەوەیە نوێکاری، هۆشیاری و کاریگەرێکی باش بۆ جیهان بکەین. ئێمە باوەڕین بە بەرەوپێشچوونی پایداری، ڕێکخراوەکانی ئاخلاقی و یارمەتی دان بە کۆمەڵگەکان.",
+            feature1_h3: "پەیوەندی جیهانی",
+            feature1_p: "خزمەتگوزارییەکان لە زیاتر لە 30 وڵات بەردەستە",
+            feature2_h3: "زۆر زمان",
+            feature2_p: "پشتیوانی بۆ زیاتر لە 15 زمان",
+            feature3_h3: "جۆراوجۆری تیم",
+            feature3_p: "ئەندامانی تیم لە 25 نیشتەجێی جۆراوجۆر"
+        },
+        Sp: {
+            h2: "Sobre Nuestra Compañía",
+            p1: "¡Bienvenidos a Luminex Solutions! Estamos dedicados a ofrecer servicios de la más alta calidad a nuestros clientes en todo el mundo. Nuestro equipo de expertos trabaja incansablemente para garantizar su completa satisfacción.",
+            p2: "Fundada en 2010, hemos crecido hasta convertirnos en un líder global en nuestra industria, con oficinas en más de 20 países y un equipo diverso que representa innumerables culturas y antecedentes.",
+            p3: "Nuestra misión es innovar, inspirar y tener un impacto positivo en el mundo a través de nuestro trabajo. Creemos en la sostenibilidad, las prácticas comerciales éticas y en retribuir a las comunidades que servimos.",
+            feature1_h3: "Alcance Global",
+            feature1_p: "Servicios disponibles en más de 30 países en todo el mundo",
+            feature2_h3: "Multilingüe",
+            feature2_p: "Soporte para más de 15 idiomas",
+            feature3_h3: "Diversidad de Equipo",
+            feature3_p: "Miembros del equipo de 25 nacionalidades diferentes"
+        },
+        Fr: {
+            h2: "À propos de notre entreprise",
+            p1: "Bienvenue chez Luminex Solutions ! Nous nous engageons à fournir des services de la plus haute qualité à nos clients du monde entier. Notre équipe d'experts travaille sans relâche pour garantir votre entière satisfaction.",
+            p2: "Fondée en 2010, nous sommes devenus un leader mondial de notre secteur, avec des bureaux dans plus de 20 pays et une équipe diversifiée représentant de nombreuses cultures et origines.",
+            p3: "Notre mission est d'innover, d'inspirer et d'avoir un impact positif sur le monde à travers notre travail. Nous croyons en la durabilité, les pratiques commerciales éthiques et le soutien des communautés que nous servons.",
+            feature1_h3: "Portée Mondiale",
+            feature1_p: "Services disponibles dans plus de 30 pays à travers le monde",
+            feature2_h3: "Multilingue",
+            feature2_p: "Support pour plus de 15 langues",
+            feature3_h3: "Diversité de l'équipe",
+            feature3_p: "Membres de l'équipe de 25 nationalités différentes"
+        }
+    };
+
+   function updateLanguage(lang) {
+        const content = translations[lang];
+        document.querySelector('.about-main h2').textContent = content.h2;
+        const ps = document.querySelectorAll('.about-main p');
+        ps[0].textContent = content.p1;
+        ps[1].textContent = content.p2;
+        ps[2].textContent = content.p3;
+
+        const features = document.querySelectorAll('.feature');
+        features[0].querySelector('h3').textContent = content.feature1_h3;
+        features[0].querySelector('p').textContent = content.feature1_p;
+        features[1].querySelector('h3').textContent = content.feature2_h3;
+        features[1].querySelector('p').textContent = content.feature2_p;
+        features[2].querySelector('h3').textContent = content.feature3_h3;
+        features[2].querySelector('p').textContent = content.feature3_p;
+    }
+
+    // Toggle language buttons
+    langToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        langButtons.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.lang-selector')) {
+            langButtons.classList.remove('show');
+        }
+    });
+
+    // Language button clicks
+    const langButtonsAll = document.querySelectorAll('.lang-buttons button');
+    langButtonsAll.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedLang = this.textContent;
+            const langName = this.title;
+            langToggle.textContent = selectedLang;
+            langButtons.classList.remove('show');
+
+            // Update About section text
+            updateLanguage(selectedLang);
+
+            // Show floating message
+            const message = document.createElement('div');
+            message.textContent = `Language changed to ${langName}`;
+            message.style.position = 'fixed';
+            message.style.bottom = '20px';
+            message.style.right = '20px';
+            message.style.backgroundColor = '#001b3a';
+            message.style.color = 'white';
+            message.style.padding = '12px 24px';
+            message.style.borderRadius = '8px';
+            message.style.zIndex = '10000';
+            message.style.boxShadow = '0 6px 15px rgba(0,0,0,0.2)';
+            message.style.animation = 'fadeIn 0.5s, fadeOut 0.5s 2.5s forwards';
+            message.style.fontWeight = '500';
+            message.style.fontSize = '1.05rem';
+
+            document.body.appendChild(message);
+            setTimeout(() => {
+                if (message.parentNode) message.parentNode.removeChild(message);
+            }, 3000);
+        });
+    });
+});
+
+
+   
+window.addEventListener("scroll", function() {
+  const header = document.querySelector("header");
+  if (window.scrollY > 50) {
+    header.classList.add("shrink");
+  } else {
+    header.classList.remove("shrink");
+  }
+});
+ 
+
+ 
+
+   </script>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <h2 class="footer-logo">Luminex Solutions</h2>
+                <p>Innovative solutions for your digital success.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@luminex.com</p>
+                <p>Phone: +964 750 000 0000</p>
+                <p>Erbil, Kurdistan</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2025 Luminex Solutions | All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

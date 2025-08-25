@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graphic Design</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>    
+
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+             font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+              margin: 0;
+            padding: 0;
+        }
+     /* Header */
+  /* Header */
+header {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+    color: #001b3a;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0; /* stick directly at top */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #001b3a;
+    border-bottom: 0 0 12px 12px; /* rounded only bottom */
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0, 27, 58, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* Logo / Title */
+header h1 { 
+    font-size: 1.8rem; 
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(45deg, #001b3a, #003a7a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: font-size 0.3s ease, padding 0.3s ease;
+      font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+}
+
+/* Nav links */
+nav a {
+    color: #001b3a;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+      font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+}
+
+nav a:hover { 
+    background-color: rgba(0, 27, 58, 0.08);
+    text-decoration: none;
+}
+
+nav a:active {
+    background-color: rgba(0, 27, 58, 0.15);
+}
+
+/* ===== Scroll Effect ===== */
+header.shrink {
+    padding: 6px 15px;
+    box-shadow: 0 2px 8px rgba(0, 27, 58, 0.15);
+}
+
+header.shrink h1 {
+    font-size: 1.4rem;
+}
+
+    /* Hero Section */
+    .hero {
+      background: #c9c9c983;
+      padding: 60px 30px;
+      text-align: center;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: 40px auto;
+      border: 1px solid #0b1625;
+     
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #001b3a;
+      font-weight: 800;
+        font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      text-align: justify;
+        font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+    }
+
+    .hero p strong {
+      color: #0056a7;
+      font-weight: 700;
+        font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+    }
+
+    /* Content Section */
+.content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+    color: #333;
+}
+
+    .content h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #001b3a;
+      font-weight: 700;
+      text-align: center;
+        font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #555;
+      text-align: justify;
+      margin-bottom: 15px;
+        font-family:"OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+            font-weight: bold;
+    }
+
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #001b3a 0%, #00264d 100%);
+    color: #fff;
+    padding: 50px 20px 25px;
+    width: 100%;        /* Full width without scrollbar issue */
+    margin: 0;          /* Remove margins */
+    position: relative;
+    left: 0;
+    right: 0;
+      font-family: "OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+    font-weight: bold;
+}
+
+
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 35px;
+    max-width: 1500px;
+    margin: 0 auto;           /* Center content inside */
+}
+
+
+        .footer-section h2,
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .footer-section h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #4ecdc4, #2a9d8f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-section p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #d0e2ff;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 12px 0;
+        }
+
+        .footer-section ul li a {
+            color: #d0e2ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            display: inline-block;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4ecdc4;
+            transform: translateX(5px);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+            color: #d0e2ff;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #4ecdc4;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 1rem;
+            color: #8a8a8a;
+        }
+
+        /* ===== Responsive ===== */
+@media (max-width: 1200px) {
+    .hero { 
+        padding: 50px 25px; 
+    }
+    .hero h2 { font-size: 2.2rem; }
+    .hero p { font-size: 1.1rem; }
+    .content { padding: 25px; }
+    .content h3 { font-size: 1.8rem; }
+    .content p { font-size: 0.95rem; }
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    nav {
+        margin-top: 10px;
+    }
+    nav a {
+        margin: 10px;
+        font-size: 1rem;
+    }
+    .hero {
+        padding: 45px 20px;
+        margin: 30px 10px;
+    }
+    .hero h2 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .content { padding: 20px; margin: 30px 10px; }
+    .content h3 { font-size: 1.6rem; }
+    .content p { font-size: 0.95rem; }
+
+
+ 
+    .footer-container,
+    .footer-section,
+    .footer-section h2,
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul li a,
+    .social-icons a,
+    .footer-bottom {
+        text-align: center;
+    }
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 15px;
+    }
+    .hero h2 { font-size: 1.8rem; }
+    .hero p { font-size: 0.95rem; }
+    .content h3 { font-size: 1.4rem; }
+    .content p { font-size: 0.9rem; }
+}
+
+ 
+    .footer-container,
+    .footer-section,
+    .footer-section h2,
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul li a,
+    .social-icons a {
+        text-align: center; /* center all footer content on mobile/tablet */
+    }
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.4rem;
+    }
+    nav a {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        margin: 5px;
+    }
+    .hero {
+        padding: 30px 10px;
+    }
+    .hero h2 { font-size: 1.5rem; }
+    .hero p { font-size: 0.85rem; }
+    .content { padding: 15px; margin: 20px 5px; }
+    .content h3 { font-size: 1.2rem; }
+    .content p { font-size: 0.8rem; }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    .footer-bottom { font-size: 0.85rem; }
+       .footer-container,
+    .footer-section,
+    .footer-section h2,
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul li a,
+    .social-icons a {
+        text-align: center; /* center everything for very small screens */
+    }
+  }
+}
+
+</style>
+<body>
+ <header>
+        <h1 id="company-name">Luminex Solutions</h1>
+        <nav>
+            <a href="index.html" id="nav-home">Home</a>
+            <a href="about.html" id="nav-about">About</a>
+            <a href="contact.html" id="nav-contact">Contact</a>
+        </nav>
+   
+    </header>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>Our Work in Graphic Design</h2>
+    <p>We create eye-catching <strong>logos, posters, social media graphics, and branding materials</strong> that leave a lasting impression.</p>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content">
+    <h3>Graphic Design Services</h3>
+    <p>We specialize in crafting visuals that communicate your brand's message effectively. Services include logo design, branding, social media graphics, promotional posters, and marketing visuals.</p>
+    <p>Every design is made to captivate your audience, strengthen your brand identity, and enhance your business’s visual presence. From startups to established companies, our team ensures your visuals are both beautiful and functional.</p>
+  </div>
+
+      <script>
+window.addEventListener("scroll", function() {
+  const header = document.querySelector("header");
+  if (window.scrollY > 50) {
+    header.classList.add("shrink");
+  } else {
+    header.classList.remove("shrink");
+  }
+});
+ 
+
+ </script>
+ <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <h2 class="footer-logo">Luminex Solutions</h2>
+                <p>Innovative solutions for your digital success.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@luminex.com</p>
+                <p>Phone: +964 750 000 0000</p>
+                <p>Erbil, Kurdistan</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2025 Luminex Solutions | All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
