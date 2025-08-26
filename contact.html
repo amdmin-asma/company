@@ -241,6 +241,8 @@ textarea:focus {
     position: relative;
     left: 0;
     right: 0;
+       font-family: "OpenSans_Condensed-ExtraBold.ttf", sans-serif;
+    font-weight: bold;
 }
 
 
@@ -489,7 +491,7 @@ textarea:focus {
   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
-  emailjs.init('HWJmB7QhhHIReYcHf')
+  emailjs.init('YOUR_PUBLIC_KEY'); // replace with your EmailJS public key
  
  
 
@@ -503,7 +505,7 @@ form.addEventListener('submit', function(e) {
     btn.value = 'Sending...';
 
     const serviceID = 'default_service';
-    const templateID = 'template_wb3hcka';
+    const templateID = 'template_ID';
 
     emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
@@ -568,7 +570,7 @@ window.addEventListener("scroll", function() {
                 <h3>Contact</h3>
                 <p>Email: info@luminex.com</p>
                 <p>Phone: +964 750 000 0000</p>
-                <p>Erbil, Kurdistan</p>
+                <p>sulaymanhah, Kurdistan</p>
             </div>
 
             <!-- Social Media -->
